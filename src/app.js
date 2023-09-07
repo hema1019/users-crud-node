@@ -1,4 +1,5 @@
 import express from "express";
+import cors from 'cors';
 import db from "./utils/database.js";
 import User from "./models/users.model.js";
 import "dotenv/config";
@@ -24,6 +25,7 @@ db.sync() // si no existe la tabla -> la crea / si ya existe hace nada
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 // health check
 app.get("/", (req, res) => {
